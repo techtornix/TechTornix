@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Techtornix - Modern Software House Website
 
 A professional, animated website built with MERN Stack (MongoDB, Express.js, React.js, Node.js) featuring Three.js and GSAP animations.
@@ -87,3 +88,8 @@ Based on modern software house designs from Techloset.com and Xeven Solutions.
 ## 📄 License
 
 MIT License - see LICENSE file for details.
+=======
+# TechTornix
+this repository made for the techtornix site 
+properly work on this
+>>>>>>> 31008c1fe6f5e34d05763e7cd857f5db9e3aea50
