@@ -17,10 +17,7 @@
     "JWT_SECRET": "@jwt_secret",
     "CLIENT_URL": "@client_url",
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
   }
+  
 }
+
