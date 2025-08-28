@@ -1,14 +1,15 @@
 {
-  "name": "techtornix-website",
+  "name": "techtornix-backend",
   "version": "1.0.0",
   "description": "Modern software house website for Techtornix",
   "main": "api/health.js",
   "scripts": {
-    "dev": "concurrently \"vercel dev\" \"cd frontend && npm start\"",
-    "build": "cd frontend && npm run build",
-    "install-all": "npm install && cd frontend && npm install",
+    "dev": "vercel dev",
+    "build": "echo 'Backend ready for deployment'",
+    "install-all": "npm install",
     "vercel-dev": "vercel dev",
-    "deploy": "vercel --prod"
+    "deploy": "node deploy.js",
+    "deploy-manual": "vercel --prod"
   },
   "keywords": [
     "mern",
