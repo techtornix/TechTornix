@@ -32,9 +32,9 @@ const FAQ = () => {
         "Custom software solutions are tailored applications built to address unique business challenges, ensuring scalability, security, and competitive advantage unlike generic off-the-shelf tools.",
     },
     {
-      question: "Why choose Techloset for custom software development?",
+      question: "Why choose TechTornix for custom software development?",
       answer:
-        "Techloset stands out with its team of expert developers, innovative approach, and commitment to client success. We provide complete application development from UI/UX designing to CI/CD, using the latest technologies to transform your business digitally.",
+        "TechTornix stands out with its team of expert developers, innovative approach, and commitment to client success. We provide complete application development from UI/UX designing to CI/CD, using the latest technologies to transform your business digitally.",
     },
     {
       question: "Which industries do you serve with custom software?",

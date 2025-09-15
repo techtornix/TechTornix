@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import SimpleHeroSection from '../components/home/SimpleHeroSection';
 import ServicesSection from '../components/home/ServicesSection';
 import CompaniesCarousel from '../components/home/CompaniesCarousel';
-import TechStackSection from '../components/home/TechStackSection';
+// import TechStackSection from '../components/home/TechStackSection';
 import SuccessStorySection from '../components/home/SuccessStorySection';
 import WorkingMethodologySection from '../components/home/WorkingMethodologySection';
 import FeaturedProjects from '../components/home/FeaturedProjects';
@@ -88,9 +88,9 @@ const Home = () => {
         </section>
 
         {/* Tech Stack Section */}
-        <section className="reveal-section section-padding" style={{ isolation: 'isolate' }}>
+        {/* <section className="reveal-section section-padding" style={{ isolation: 'isolate' }}>
           <TechStackSection />
-        </section>
+        </section> */}
 
         {/* Success Story Section - Always visible */}
         <section 

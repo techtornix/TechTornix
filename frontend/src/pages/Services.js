@@ -16,6 +16,7 @@ import {
   FiUsers,
   FiStar
 } from 'react-icons/fi';
+import TechStackSection from '../components/home/TechStackSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -312,6 +313,9 @@ const Services = () => {
           </div>
         </section>
 
+        <section className="reveal-section section-padding" style={{ isolation: 'isolate' }}>
+          <TechStackSection />
+        </section>
         {/* CTA Section */}
         <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">
           <div className="container-custom text-center">

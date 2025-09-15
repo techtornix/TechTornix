@@ -82,7 +82,7 @@ const demoBlogPosts = [
     readTime: '12 min read',
     views: 2847,
     featured: true,
-    image: '/images/blogs/reactjs.png',
+  image: '/images/blogs/reactjs.webp',
     metaDescription: 'Learn React.js development best practices, performance optimization, and modern techniques for building scalable web applications in 2025.',
     keywords: ['React development', 'JavaScript frameworks', 'frontend optimization', 'React hooks', 'web development']
   },
@@ -124,7 +124,7 @@ const demoBlogPosts = [
     readTime: '15 min read',
     views: 1923,
     featured: true,
-    image: '/images/blogs/Nodejs.png',
+  image: '/images/blogs/Nodejs.webp',
     metaDescription: 'Complete guide to building scalable microservices architecture with Node.js, Docker, and Kubernetes for enterprise applications.',
     keywords: ['Node.js microservices', 'backend architecture', 'Docker containers', 'API development', 'scalable systems']
   },
@@ -192,7 +192,7 @@ const demoBlogPosts = [
     readTime: '18 min read',
     views: 3156,
     featured: true,
-    image: '/images/blogs/ai.png',
+  image: '/images/blogs/ai.webp',
     metaDescription: 'Learn to integrate AI and machine learning APIs into web applications for intelligent user experiences and automated features.',
     keywords: ['AI web development', 'machine learning APIs', 'intelligent applications', 'TensorFlow.js', 'AI integration']
   },
@@ -236,7 +236,7 @@ const demoBlogPosts = [
     readTime: '14 min read',
     views: 2234,
     featured: false,
-    image: '/images/blogs/cyber.png',
+  image: '/images/blogs/cyber.webp',
     metaDescription: 'Learn professional cybersecurity practices to secure web applications from SQL injection, XSS, CSRF, and other modern threats, based on OWASP guidelines and expert strategies.',
     keywords: ['web security', 'cybersecurity practices', 'OWASP top 10', 'application security', 'threat protection']
 
@@ -285,7 +285,7 @@ const demoBlogPosts = [
     readTime: '18 min read',
     views: 1876,
     featured: false,
-    image: '/images/blogs/ios.png',
+  image: '/images/blogs/ios.webp',
     metaDescription: 'A complete 2025 guide to iOS development with Swift, SwiftUI, Xcode, and best practices for building secure and high-performance iOS apps.',
     keywords: ['iOS development 2025', 'SwiftUI', 'Swift programming', 'Xcode', 'Apple mobile apps']
 
@@ -358,7 +358,7 @@ const demoBlogPosts = [
     readTime: '20 min read',
     views: 1654,
     featured: false,
-    image: '/images/blogs/devops.png',
+  image: '/images/blogs/devops.webp',
     metaDescription: 'Step-by-step guide to implementing CI/CD pipelines with GitHub Actions and AWS for automated, secure, and reliable software delivery.',
     keywords: ['DevOps automation', 'CI/CD pipeline', 'GitHub Actions', 'AWS deployment', 'continuous integration']
 
@@ -413,7 +413,7 @@ const demoBlogPosts = [
     readTime: '15 min read',
     views: 2345,
     featured: false,
-    image: '/images/blogs/pwa.png',
+  image: '/images/blogs/pwa.webp',
     metaDescription: 'Build Progressive Web Apps with offline support, push notifications, installability, and advanced optimization for the modern web.',
     keywords: ['Progressive Web Apps', 'PWA development', 'offline-first apps', 'service workers', 'web app manifest']
   },
@@ -476,7 +476,7 @@ const demoBlogPosts = [
     readTime: '19 min read',
     views: 1748,
     featured: false,
-    image: '/images/blogs/db.png',
+  image: '/images/blogs/db.webp',
     metaDescription: 'Advanced MySQL optimization guide: indexing, query optimization, caching, and scaling techniques for high-traffic applications.',
     keywords: ['MySQL optimization', 'database performance', 'query optimization', 'database indexing', 'MySQL tuning']
   },
@@ -537,7 +537,7 @@ const demoBlogPosts = [
     readTime: '21 min read',
     views: 2134,
     featured: false,
-    image: '/images/blogs/cloud.png',
+  image: '/images/blogs/cloud.webp',
     metaDescription: 'Explore scalable cloud architecture patterns, design strategies, and real-world best practices for AWS and Azure.',
     keywords: ['cloud architecture', 'AWS patterns', 'Azure architecture', 'scalable applications', 'cloud design patterns']
   }
