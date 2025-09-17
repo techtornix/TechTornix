@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiTrendingUp, FiUsers, FiAward, FiClock } from 'react-icons/fi';
@@ -111,31 +111,23 @@ const SuccessStorySection = () => {
         opacity: '1 !important'
       }}
     >
-      <div className="text-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our Success is Our <span className="gradient-text">Story</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Numbers that speak for themselves. We've built a track record of delivering 
-            exceptional results and creating lasting value for our clients.
-          </p>
-        </motion.div>
+      <div className="text-center mb-16 anim-fade-in-up">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          Our Success is Our <span className="gradient-text">Story</span>
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          Numbers that speak for themselves. We've built a track record of delivering 
+          exceptional results and creating lasting value for our clients.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <motion.div
+            <div
               key={stat.label}
-              className="stat-card relative group h-full"
-              whileHover={{ y: -10 }}
+              className="stat-card relative group h-full transition-transform duration-300 hover:-translate-y-2"
             >
               <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 overflow-hidden h-full flex flex-col">
                 {/* Background gradient */}
@@ -174,19 +166,15 @@ const SuccessStorySection = () => {
                 {/* Hover effect */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
 
       {/* Additional content */}
       <div className="mt-20 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-12 text-white"
+        <div
+          className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-2xl p-8 md:p-12 text-white anim-fade-in-up animation-delay-400"
         >
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
             Ready to Be Our Next Success Story?
@@ -195,24 +183,20 @@ const SuccessStorySection = () => {
             Join hundreds of satisfied clients who have transformed their businesses with our innovative solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
+            <a
               href="/contact"
               className="inline-flex items-center px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               Start Your Project
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="/portfolio"
               className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-all duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               View Our Work
-            </motion.a>
+            </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

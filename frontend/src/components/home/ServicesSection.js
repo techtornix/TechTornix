@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
@@ -74,13 +74,7 @@ const ServicesSection = () => {
     <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container-custom">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 anim-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-gray-900 dark:text-white">Why Choose</span>{' '}
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -90,16 +84,15 @@ const ServicesSection = () => {
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Tailored Services For Every Vision
           </p>
-        </motion.div>
+        </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.id}
-              className="project-card group cursor-pointer h-full"
+              className="project-card group cursor-pointer h-full transition-transform duration-300 hover:-translate-y-2"
               onClick={() => {}}
-              whileHover={{ y: -10 }}
             >
               <Link to={service.link} className="block h-full">
                 <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 h-full flex flex-col">
@@ -135,18 +128,12 @@ const ServicesSection = () => {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
+        <div className="text-center mt-16 anim-fade-in-up animation-delay-400">
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
             Ready to transform your business with cutting-edge technology?
           </p>
@@ -156,7 +143,7 @@ const ServicesSection = () => {
           >
             Get Started Today
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

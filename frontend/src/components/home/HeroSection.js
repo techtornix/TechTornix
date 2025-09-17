@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 // Removed GSAP to prevent conflicts
 import { FiArrowRight, FiPlay, FiX } from 'react-icons/fi';
 import AnimatedLogo from './AnimatedLogo';
@@ -102,11 +102,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div className="anim-fade-in-left">
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                 <span className="block">Building</span>
                 <span className="block hero-subtitle">
@@ -116,25 +112,17 @@ const HeroSection = () => {
                 </span>
                 <span className="block hero-subtitle">Together</span>
               </h1>
-            </motion.div>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="hero-description text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
+            <p
+              className="hero-description text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed anim-fade-in-left animation-delay-200"
             >
               Transform your business with cutting-edge technology solutions. We specialize in web development,
               mobile apps, AI solutions, and digital innovation that drives real results.
-            </motion.p>
+            </p>
 
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="hero-buttons flex flex-col sm:flex-row gap-4"
-            >
+            <div className="hero-buttons flex flex-col sm:flex-row gap-4 anim-fade-in-up animation-delay-400">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -150,14 +138,11 @@ const HeroSection = () => {
                 <FiPlay className="mr-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform duration-200" />
                 Watch Our Story
               </button>
-            </motion.div>
+            </div>
 
             {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="hero-stats grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 pt-6 lg:pt-8"
+            <div
+              className="hero-stats grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 pt-6 lg:pt-8 anim-fade-in-up animation-delay-600"
               ref={statsRef}
             >
               <div className="text-center">
@@ -192,23 +177,20 @@ const HeroSection = () => {
                   Team Members
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Content - Animated Logo */}
           <div className="flex items-center justify-center order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg"
+            <div
+              className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg anim-fade-in-right animation-delay-200"
             >
               <AnimatedLogo />
 
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-16 h-16 lg:w-24 lg:h-24 bg-gradient-to-r from-primary-400/20 to-accent-400/20 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-4 -left-4 w-20 h-20 lg:w-32 lg:h-32 bg-gradient-to-r from-accent-400/20 to-primary-400/20 rounded-full blur-2xl"></div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -230,20 +212,13 @@ const HeroSection = () => {
       </motion.div> */}
 
       {/* Video Modal */}
-      <AnimatePresence>
-        {showVideoModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
+      {showVideoModal && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 anim-fade-in"
             onClick={() => setShowVideoModal(false)}
           >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden max-w-4xl w-full aspect-video shadow-2xl"
+            <div
+              className="relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden max-w-4xl w-full aspect-video shadow-2xl anim-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -288,10 +263,9 @@ const HeroSection = () => {
                   */}
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
     </section>
   );
 };

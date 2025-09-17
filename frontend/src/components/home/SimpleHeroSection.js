@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { FiArrowRight, FiPlay } from 'react-icons/fi';
 import AnimatedLogo from './AnimatedLogo';
 import { MdWork } from "react-icons/md";
@@ -80,11 +80,7 @@ const SimpleHeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div className="anim-fade-in-left">
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                 <span className="block">Building</span>
                 <span className="block">
@@ -94,25 +90,17 @@ const SimpleHeroSection = () => {
                 </span>
                 <span className="block">Together</span>
               </h1>
-            </motion.div>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
+            <p
+              className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed anim-fade-in-left animation-delay-200"
             >
               Transform your business with cutting-edge technology solutions. We specialize in web development,
               mobile apps, AI solutions, and digital innovation that drives real results.
-            </motion.p>
+            </p>
 
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 anim-fade-in-up animation-delay-400">
               {/* Get Started Today Button */}
               <Link
                 to="/contact"
@@ -130,16 +118,11 @@ const SimpleHeroSection = () => {
                 <MdWork className="mr-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform duration-200" />
                 Visit Our Creations
               </Link>
-            </motion.div>
+            </div>
 
 
             {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 pt-6 lg:pt-8"
-            >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 pt-6 lg:pt-8 anim-fade-in-up animation-delay-600">
               <div className="text-center">
                 <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400 mb-1">
                   {counters.projects}+
@@ -172,23 +155,20 @@ const SimpleHeroSection = () => {
                   Team Members
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Content - Animated Logo */}
           <div className="flex items-center justify-center order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg"
+            <div
+              className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg anim-fade-in-right animation-delay-200"
             >
               <AnimatedLogo />
 
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-16 h-16 lg:w-24 lg:h-24 bg-gradient-to-r from-primary-400/20 to-accent-400/20 rounded-full blur-2xl"></div>
               <div className="absolute -bottom-4 -left-4 w-20 h-20 lg:w-32 lg:h-32 bg-gradient-to-r from-accent-400/20 to-primary-400/20 rounded-full blur-2xl"></div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -234,14 +234,7 @@ const TechStackSection = () => {
   return (
     <section ref={sectionRef} className="tech-stack-section bg-gradient-to-br from-[#1a1625] via-[#2a2438] to-[#1a1625] py-20 relative filter-stable" style={{ isolation: 'isolate' }}>
       <div className="container-custom">
-      <div className="text-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="tech-title"
-        >
+      <div className="text-center mb-16 tech-title anim-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Technologies</span>
           </h2>
@@ -266,7 +259,7 @@ const TechStackSection = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div 
@@ -274,130 +267,113 @@ const TechStackSection = () => {
         className="tech-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 optimize-cls"
         style={{ minHeight: '400px', contain: 'layout' }}
       >
-        <AnimatePresence mode="popLayout">
           {filteredTechnologies.map((tech, index) => {
             const Icon = tech.icon;
             return (
-              <motion.div
+              <div
                 key={`${tech.name}-${tech.category}`}
                 className="tech-card relative group cursor-pointer"
                 onMouseEnter={handleCardHover}
                 onMouseLeave={handleCardLeave}
-                whileHover={{ y: -8 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2, delay: index * 0.02 }}
                 style={{ perspective: '1000px' }}
-                layout
               >
-              {/* Background rotating div */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:rotate-6 group-hover:scale-105 z-0"
-                style={{ 
-                  background: `linear-gradient(135deg, ${tech.color}20, ${tech.color}40, ${tech.color}20)`,
-                  filter: 'blur(8px)'
-                }}
-              ></div>
-
-              {/* Shine effect */}
-              <div className="tech-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 opacity-0 z-10"></div>
-              
-              {/* Main card */}
-              <div className="relative bg-[#1e1b2e] rounded-2xl p-6 border-2 transition-all duration-500 overflow-hidden group-hover:bg-[#2a2438] w-full h-40 flex flex-col items-center justify-center text-center z-20 group-hover:shadow-2xl"
-                style={{
-                  borderColor: 'transparent',
-                  background: 'linear-gradient(135deg, #1e1b2e, #2a2438)',
-                }}
-              >
-                {/* Animated border */}
-                <div 
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"
+                {/* Background rotating div */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:rotate-6 group-hover:scale-105 z-0"
                   style={{ 
-                    background: `linear-gradient(45deg, ${tech.color}, transparent, ${tech.color}, transparent, ${tech.color})`,
-                    backgroundSize: '400% 400%',
-                    animation: 'gradient-shift 3s ease infinite',
-                    padding: '2px',
-                    mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    maskComposite: 'exclude',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor'
+                    background: `linear-gradient(135deg, ${tech.color}20, ${tech.color}40, ${tech.color}20)`,
+                    filter: 'blur(8px)'
                   }}
                 ></div>
 
-                {/* Icon Container */}
-                <div className="relative mb-3 group-hover:scale-125 transition-all duration-500 transform group-hover:rotate-12">
-                  <div className="w-16 h-16 flex items-center justify-center relative">
-                    {/* Icon glow effect */}
-                    <div 
-                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-500 blur-xl"
-                      style={{ backgroundColor: tech.color }}
-                    ></div>
-                    <Icon 
-                      className="w-10 h-10 transition-all duration-500 relative z-10 group-hover:drop-shadow-lg" 
-                      style={{ 
-                        color: tech.color,
-                        filter: `drop-shadow(0 0 8px ${tech.color}60)`
-                      }}
-                    />
-                  </div>
-                </div>
+                {/* Shine effect */}
+                <div className="tech-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 opacity-0 z-10"></div>
                 
-                <h3 className="text-sm font-semibold text-white group-hover:text-gray-100 transition-all duration-300 relative z-10"
+                {/* Main card */}
+                <div className="relative bg-[#1e1b2e] rounded-2xl p-6 border-2 transition-all duration-500 overflow-hidden group-hover:bg-[#2a2438] w-full h-40 flex flex-col items-center justify-center text-center z-20 group-hover:shadow-2xl"
                   style={{
-                    textShadow: `0 0 10px ${tech.color}40`
+                    borderColor: 'transparent',
+                    background: 'linear-gradient(135deg, #1e1b2e, #2a2438)',
                   }}
                 >
-                  {tech.name}
-                </h3>
+                  {/* Animated border */}
+                  <div 
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 animate-pulse"
+                    style={{ 
+                      background: `linear-gradient(45deg, ${tech.color}, transparent, ${tech.color}, transparent, ${tech.color})`,
+                      backgroundSize: '400% 400%',
+                      animation: 'gradient-shift 3s ease infinite',
+                      padding: '2px',
+                      mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      maskComposite: 'exclude',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor'
+                    }}
+                  ></div>
 
-                {/* Particle effects */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 rounded-full animate-ping"
-                      style={{
-                        backgroundColor: tech.color,
-                        top: `${20 + Math.random() * 60}%`,
-                        left: `${20 + Math.random() * 60}%`,
-                        animationDelay: `${i * 0.2}s`,
-                        animationDuration: '2s'
-                      }}
-                    ></div>
-                  ))}
+                  {/* Icon Container */}
+                  <div className="relative mb-3 group-hover:scale-125 transition-all duration-500 transform group-hover:rotate-12">
+                    <div className="w-16 h-16 flex items-center justify-center relative">
+                      {/* Icon glow effect */}
+                      <div 
+                        className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-500 blur-xl"
+                        style={{ backgroundColor: tech.color }}
+                      ></div>
+                      <Icon 
+                        className="w-10 h-10 transition-all duration-500 relative z-10 group-hover:drop-shadow-lg" 
+                        style={{ 
+                          color: tech.color,
+                          filter: `drop-shadow(0 0 8px ${tech.color}60)`
+                        }}
+                      />
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-sm font-semibold text-white group-hover:text-gray-100 transition-all duration-300 relative z-10"
+                    style={{
+                      textShadow: `0 0 10px ${tech.color}40`
+                    }}
+                  >
+                    {tech.name}
+                  </h3>
+
+                  {/* Particle effects */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 rounded-full animate-ping"
+                        style={{
+                          backgroundColor: tech.color,
+                          top: `${20 + Math.random() * 60}%`,
+                          left: `${20 + Math.random() * 60}%`,
+                          animationDelay: `${i * 0.2}s`,
+                          animationDuration: '2s'
+                        }}
+                      ></div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          );
-        })}
-        </AnimatePresence>
+            );
+          })}
       </div>
 
       {/* Bottom CTA */}
-      <div className="text-center mt-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
+      <div className="text-center mt-16 anim-fade-in-up animation-delay-300">
+        <p className="text-gray-300 mb-6">
+          Want to see these technologies in action?
+        </p>
+        <a
+          href="/portfolio"
+          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transform hover:-translate-y-1 border border-cyan-500/30"
         >
-          <p className="text-gray-300 mb-6">
-            Want to see these technologies in action?
-          </p>
-          <motion.a
-            href="/portfolio"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-semibold hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-cyan-500/25 transform hover:-translate-y-1 border border-cyan-500/30"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View Our Projects
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </motion.a>
-        </motion.div>
+          View Our Projects
+          <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
-      </div>
+
     </section>
   );
 };

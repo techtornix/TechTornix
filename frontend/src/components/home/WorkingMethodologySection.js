@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -118,13 +118,7 @@ const WorkingMethodologySection = () => {
         opacity: '1 !important'
       }}
     >
-      <div className="text-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+      <div className="text-center mb-16 anim-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Our Working <span className="gradient-text">Methodologies</span>
           </h2>
@@ -132,8 +126,8 @@ const WorkingMethodologySection = () => {
             We follow a proven methodology that ensures successful project delivery, 
             from initial concept to ongoing support.
           </p>
-        </motion.div>
-      </div>
+        </div>
+
 
       {/* Show Develop phase icon here */}
       <div className="flex justify-center mb-12">
@@ -152,7 +146,7 @@ const WorkingMethodologySection = () => {
             const isEven = index % 2 === 0;
 
             return (
-              <motion.div
+              <div
                 key={step.title}
                 className={`methodology-step flex flex-col lg:flex-row items-center gap-8 ${
                   isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
@@ -198,7 +192,7 @@ const WorkingMethodologySection = () => {
                     <Icon className="w-20 h-20 text-white" />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -206,12 +200,8 @@ const WorkingMethodologySection = () => {
 
       {/* CTA Section */}
       <div className="mt-20 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-700"
+        <div
+          className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-700 anim-fade-in-up animation-delay-400"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             Ready to Start Your Journey?
@@ -219,16 +209,14 @@ const WorkingMethodologySection = () => {
           <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto text-lg">
             Let's discuss your project and see how our proven methodology can bring your vision to life.
           </p>
-          <motion.a
+          <a
             href="/contact"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             Get Started Today
             <FiArrowRight className="w-5 h-5 ml-2" />
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </div>
     </section>
   );

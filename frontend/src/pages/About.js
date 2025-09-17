@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
@@ -135,22 +135,14 @@ const About = () => {
         <meta name="description" content="Learn about Techtornix - our story, mission, values, and the amazing team behind our innovative software solutions." />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
+        className="min-h-screen pt-8 anim-fade-in"
       >
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="anim-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 About <span className="gradient-text">Techtornix</span>
               </h1>
@@ -158,7 +150,7 @@ const About = () => {
                 We are a passionate team of innovators, creators, and problem-solvers
                 dedicated to building the future of technology, one solution at a time.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -167,13 +159,9 @@ const About = () => {
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className="stat-card text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  className="stat-card text-center anim-fade-in-up"
                 >
                   <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
@@ -184,7 +172,7 @@ const About = () => {
                   <div className="text-gray-600 dark:text-gray-400 font-medium">
                     {stat.label}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -194,12 +182,7 @@ const About = () => {
         <section className="section-padding bg-gray-50 dark:bg-gray-800">
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
+              <div className="anim-fade-in-left">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                   Our Story
                 </h2>
@@ -220,15 +203,9 @@ const About = () => {
                     boundaries and create something extraordinary.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
+              <div className="relative anim-fade-in-right">
                 <div className="bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl p-8 text-white">
                   <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
                   <p className="text-primary-100 leading-relaxed">
@@ -236,7 +213,7 @@ const About = () => {
                     that drive growth, efficiency, and success in the digital age.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -255,13 +232,9 @@ const About = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300"
+                  className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 anim-fade-in-up"
                 >
                   <div className="text-4xl mb-4">{value.icon}</div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -270,7 +243,7 @@ const About = () => {
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     {value.description}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -286,12 +259,7 @@ const About = () => {
 
           <div className="container-custom relative">
             <div className="text-center mb-20">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
+              <div className="anim-fade-in-up">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                   Meet Our <span className="gradient-text">Exceptional Team</span>
                 </h2>
@@ -299,7 +267,7 @@ const About = () => {
                   The brilliant minds and creative souls behind our innovative solutions.
                   Each member brings unique expertise and passion to deliver excellence.
                 </p>
-              </motion.div>
+              </div>
             </div>
 
             <OrbitalTeamShowcase />
@@ -309,12 +277,7 @@ const About = () => {
         {/* CTA Section */}
         <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <div className="anim-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Ready to Work Together?
               </h2>
@@ -330,10 +293,10 @@ const About = () => {
                   Join Our Team
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   );
 };

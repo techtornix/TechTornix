@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiChevronLeft, FiChevronRight, FiStar } from 'react-icons/fi';
@@ -121,33 +121,21 @@ const TestimonialsSection = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+        <div className="text-center mb-12 anim-fade-in-up">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               What Our <span className="gradient-text">Clients Say</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
             </p>
-          </motion.div>
-        </div>
+          </div>
 
         {/* Main Testimonial Carousel */}
         <div className="relative max-w-full sm:max-w-3xl lg:max-w-4xl mx-auto mb-12">
           <div className="relative overflow-hidden rounded-2xl">
-            <AnimatePresence mode="wait">
-              <motion.div
+              <div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                className="testimonial-card bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-gray-200 dark:border-gray-700 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px]"
+                className="testimonial-card bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-gray-200 dark:border-gray-700 w-full min-h-[300px] sm:min-h-[320px] md:min-h-[340px] anim-fade-in-up"
               >
                 <div className="text-center">
                   {/* Stars */}
@@ -180,8 +168,7 @@ const TestimonialsSection = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
           </div>
 
           {/* Navigation Arrows */}
@@ -217,11 +204,11 @@ const TestimonialsSection = () => {
         {/* All Testimonials Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={testimonial.id}
               className="testimonial-card bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group cursor-pointer"
               onClick={() => goToSlide(index)}
-              whileHover={{ y: -5 }}
+              
             >
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base flex-shrink-0">
@@ -246,7 +233,7 @@ const TestimonialsSection = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

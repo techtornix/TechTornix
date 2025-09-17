@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -83,8 +82,8 @@ const demoBlogPosts = [
     publishedAt: '2025-01-15',
     readTime: '12 min read',
     views: 2847,
-    featured: true,
-    image: '/images/blogs/reactjs.png',
+  featured: true,
+  image: '/images/blogs/reactjs.webp',
     metaDescription: 'Learn React.js development best practices, performance optimization, and modern techniques for building scalable web applications in 2025.',
     keywords: ['React development', 'JavaScript frameworks', 'frontend optimization', 'React hooks', 'web development']
   },
@@ -147,8 +146,8 @@ const demoBlogPosts = [
     publishedAt: '2025-01-10',
     readTime: '15 min read',
     views: 1923,
-    featured: true,
-    image: '/images/blogs/Nodejs.png',
+  featured: true,
+  image: '/images/blogs/Nodejs.webp',
     metaDescription: 'Complete guide to building scalable microservices architecture with Node.js, Docker, and Kubernetes for enterprise applications.',
     keywords: ['Node.js microservices', 'backend architecture', 'Docker containers', 'API development', 'scalable systems']
   },
@@ -215,8 +214,8 @@ const demoBlogPosts = [
     publishedAt: '2025-03-08',
     readTime: '18 min read',
     views: 3156,
-    featured: true,
-    image: '/images/blogs/ai.png',
+  featured: true,
+  image: '/images/blogs/ai.webp',
     metaDescription: 'Learn how to integrate AI and machine learning APIs into modern web applications using tools like OpenAI, TensorFlow.js, and Google Cloud Vision for intelligent user experiences.',
     keywords: ['AI web development', 'machine learning APIs', 'intelligent applications', 'TensorFlow.js', 'AI integration']
 
@@ -260,8 +259,8 @@ const demoBlogPosts = [
     publishedAt: '2025-01-05',
     readTime: '14 min read',
     views: 2234,
-    featured: false,
-    image: '/images/blogs/cyber.png',
+  featured: false,
+  image: '/images/blogs/cyber.webp',
     metaDescription: 'Learn professional cybersecurity practices to secure web applications from SQL injection, XSS, CSRF, and other modern threats, based on OWASP guidelines and expert strategies.',
     keywords: ['web security', 'cybersecurity practices', 'OWASP top 10', 'application security', 'threat protection']
   },
@@ -308,8 +307,8 @@ const demoBlogPosts = [
     publishedAt: '2025-05-03',
     readTime: '18 min read',
     views: 1876,
-    featured: false,
-    image: '/images/blogs/ios.png',
+  featured: false,
+  image: '/images/blogs/ios.webp',
     metaDescription: 'A complete 2025 guide to iOS development with Swift, SwiftUI, Xcode, and best practices for building secure and high-performance iOS apps.',
     keywords: ['iOS development 2025', 'SwiftUI', 'Swift programming', 'Xcode', 'Apple mobile apps']
 
@@ -381,8 +380,8 @@ const demoBlogPosts = [
     publishedAt: '2025-01-01',
     readTime: '20 min read',
     views: 1654,
-    featured: false,
-    image: '/images/blogs/devops.png',
+  featured: false,
+  image: '/images/blogs/devops.webp',
     metaDescription: 'Step-by-step guide to implementing CI/CD pipelines with GitHub Actions and AWS for automated, secure, and reliable software delivery.',
     keywords: ['DevOps automation', 'CI/CD pipeline', 'GitHub Actions', 'AWS deployment', 'continuous integration']
 
@@ -436,8 +435,8 @@ const demoBlogPosts = [
     publishedAt: '2024-12-28',
     readTime: '15 min read',
     views: 2345,
-    featured: false,
-    image: '/images/blogs/pwa.png',
+  featured: false,
+  image: '/images/blogs/pwa.webp',
     metaDescription: 'Build Progressive Web Apps with offline support, push notifications, installability, and advanced optimization for the modern web.',
     keywords: ['Progressive Web Apps', 'PWA development', 'offline-first apps', 'service workers', 'web app manifest']
   },
@@ -499,8 +498,8 @@ const demoBlogPosts = [
     publishedAt: '2024-12-25',
     readTime: '19 min read',
     views: 1748,
-    featured: false,
-    image: '/images/blogs/db.png',
+  featured: false,
+  image: '/images/blogs/db.webp',
     metaDescription: 'Advanced MySQL optimization guide: indexing, query optimization, caching, and scaling techniques for high-traffic applications.',
     keywords: ['MySQL optimization', 'database performance', 'query optimization', 'database indexing', 'MySQL tuning']
   },
@@ -560,8 +559,8 @@ const demoBlogPosts = [
     publishedAt: '2024-06-22',
     readTime: '21 min read',
     views: 2134,
-    featured: false,
-    image: '/images/blogs/cloud.png',
+  featured: false,
+  image: '/images/blogs/cloud.webp',
     metaDescription: 'Explore scalable cloud architecture patterns, design strategies, and real-world best practices for AWS and Azure.',
     keywords: ['cloud architecture', 'AWS patterns', 'Azure architecture', 'scalable applications', 'cloud design patterns']
   }
@@ -667,14 +666,7 @@ const BlogDetail = () => {
         <meta property="og:type" content="article" />
       </Helmet>
 
-      <motion.div
-        ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
-      >
+      <div ref={sectionRef} className="min-h-screen pt-8 animate-fadein">
         {/* Back Button */}
         <section className="py-8">
           <div className="container-custom">
@@ -691,12 +683,7 @@ const BlogDetail = () => {
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto text-center"
-            >
+            <div className="max-w-4xl mx-auto text-center transition-all duration-700 opacity-100 translate-y-0 animate-fadein-up">
               <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-6">
                 <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 rounded-full font-medium capitalize">
                   {post.category}
@@ -734,7 +721,7 @@ const BlogDetail = () => {
                   <span>Save</span>
                 </button> */}
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -864,22 +851,26 @@ const BlogDetail = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {relatedPosts.map((relatedPost, index) => (
-                  <motion.article
-                    key={relatedPost.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group cursor-pointer"
-                  >
+                  <article key={relatedPost.id} className="group cursor-pointer transition-all duration-700 opacity-100 translate-y-0 animate-fadein-up">
                     <Link to={`/blog/${relatedPost.slug}`} className="block">
                       <div className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div className="relative h-48 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-gray-600 dark:to-gray-500">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-xl font-bold text-white/30">
-                              {relatedPost.title.split(' ')[0]}
+                        <div className="relative h-48 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-gray-600 dark:to-gray-500 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10"></div>
+                          {relatedPost.image ? (
+                            <img
+                              src={relatedPost.image}
+                              alt={relatedPost.title}
+                              className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                              loading="lazy"
+                              style={{ zIndex: 1 }}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="text-xl font-bold text-white/30">
+                                {relatedPost.title.split(' ')[0]}
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                         <div className="p-6">
                           <div className="flex items-center justify-between mb-3">
@@ -905,13 +896,13 @@ const BlogDetail = () => {
                         </div>
                       </div>
                     </Link>
-                  </motion.article>
+                  </article>
                 ))}
               </div>
             </div>
           </section>
         )}
-      </motion.div>
+  </div>
     </>
   );
 };

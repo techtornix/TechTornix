@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { gsap } from 'gsap';
 import {
   FiMenu,
@@ -103,45 +103,7 @@ const Navbar = () => {
     return false;
   };
 
-  const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      x: '100%',
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut'
-      }
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut'
-      }
-    }
-  };
-
-  const servicesDropdownVariants = {
-    closed: {
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-      transition: {
-        duration: 0.2,
-        ease: 'easeInOut'
-      }
-    },
-    open: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-        ease: 'easeInOut'
-      }
-    }
-  };
+  // CSS-based transitions handled via classes in index.css
 
   return (
     <nav
@@ -214,15 +176,10 @@ const Navbar = () => {
                 <FiChevronDown className={`w-4 h-4 transition-transform duration-200 ${showServices ? 'rotate-180' : ''}`} />
               </Link>
 
-              <AnimatePresence>
-                {showServices && (
-                  <motion.div
+              {showServices && (
+                  <div
                     ref={servicesRef}
-                    variants={servicesDropdownVariants}
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                    className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-xl border overflow-hidden z-50"
+                    className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-xl border overflow-hidden z-50 anim-fade-in-down"
                     style={{
                       background: isDark ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
                       color: isDark ? '#fff' : '#1f2937',
@@ -260,9 +217,8 @@ const Navbar = () => {
                         </Link>
                       );
                     })}
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
             </div>
           </div>
 
@@ -296,15 +252,10 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
+      {isOpen && (
+          <div
             ref={mobileMenuRef}
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className="mobile-menu-panel lg:hidden fixed inset-y-0 right-0 w-80 max-w-[90vw] overflow-y-auto"
+            className="mobile-menu-panel lg:hidden fixed inset-y-0 right-0 w-80 max-w-[90vw] overflow-y-auto anim-fade-in-right"
             style={{
               position: 'fixed',
               top: 0,
@@ -374,14 +325,9 @@ const Navbar = () => {
                     />
                   </Link>
 
-                  <AnimatePresence>
                     {mobileServicesOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
+                      <div
+                        className="overflow-hidden anim-fade-in-down"
                       >
                         {services.map((service) => {
                           const Icon = service.icon;
@@ -411,25 +357,18 @@ const Navbar = () => {
                             </Link>
                           );
                         })}
-                      </motion.div>
+                      </div>
                     )}
-                  </AnimatePresence>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mobile-menu-overlay lg:hidden fixed inset-0 bg-black bg-opacity-60"
+      {isOpen && (
+          <div
+            className="mobile-menu-overlay lg:hidden fixed inset-0 bg-black bg-opacity-60 anim-fade-in"
             style={{
               position: 'fixed',
               top: 0,
@@ -442,7 +381,6 @@ const Navbar = () => {
             onClick={() => setIsOpen(false)}
           />
         )}
-      </AnimatePresence>
     </nav>
   );
 };

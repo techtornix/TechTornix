@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
   FiMapPin,
@@ -222,22 +221,11 @@ const Career = () => {
         <meta name="description" content="Join Techtornix and be part of an innovative team building the future of technology." />
       </Helmet>
 
-      <motion.div
-        ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
-      >
+      <div ref={sectionRef} className="min-h-screen pt-8 animate-fadein">
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="transition-all duration-700 opacity-100 translate-y-0 animate-fadein-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 Join Our <span className="gradient-text">Amazing Team</span>
               </h1>
@@ -273,7 +261,7 @@ const Career = () => {
                   <div className="text-sm text-gray-600 dark:text-gray-400">Glassdoor Rating</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -306,21 +294,12 @@ const Career = () => {
         {/* Job Listings */}
         <section className="section-padding">
           <div className="container-custom">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedDepartment}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
+            <div className="space-y-6 transition-all duration-500 opacity-100 translate-y-0 animate-fadein-up">
                 {filteredJobs.map((job) => (
-                  <motion.div
+                  <div
                     key={job.id}
-                    className="job-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 cursor-pointer group relative overflow-hidden"
+                    className="job-card bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 cursor-pointer group relative overflow-hidden hover:-translate-y-1"
                     onClick={() => openModal(job)}
-                    whileHover={{ y: -2 }}
                   >
                     {/* Expired Overlay */}
                     <div className="absolute top-0 right-0 bg-red-500 text-white px-3 py-1 rounded-bl-lg text-sm font-bold">
@@ -381,10 +360,10 @@ const Career = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            {/* AnimatePresence removed */}
           </div>
         </section>
 
@@ -433,7 +412,7 @@ const Career = () => {
                   description: 'Comprehensive health insurance and wellness programs'
                 }
               ].map((benefit, index) => (
-                <motion.div
+                <div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -450,15 +429,15 @@ const Career = () => {
                   <p className="text-gray-600 dark:text-gray-400">
                     {benefit.description}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </section>
-      </motion.div>
+  </div>
 
       {/* Job Application Modal */}
-      <AnimatePresence>
+  {/* AnimatePresence removed */}
         {isModalOpen && selectedJob && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-9999999">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg w-full max-w-2xl mx-aut">
@@ -505,7 +484,7 @@ const Career = () => {
             </div>
           </div>
         )}
-      </AnimatePresence>
+  {/* AnimatePresence removed */}
     </>
   );
 };

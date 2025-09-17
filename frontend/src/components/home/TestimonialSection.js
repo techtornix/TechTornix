@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { FiChevronLeft, FiChevronRight, FiStar, FiPlay, FiUsers, FiTarget, FiAward, FiHeart } from 'react-icons/fi';
 import VideoModal from '../common/VideoModal';
 
@@ -142,13 +142,9 @@ const TestimonialSection = () => {
         <div ref={statsRef} className="mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
+                className="text-center anim-fade-in-up"
               >
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4"
                   style={{ background: 'linear-gradient(135deg, rgba(55, 183, 195, 0.2), rgba(7, 25, 82, 0.2))' }}>
@@ -166,19 +162,14 @@ const TestimonialSection = () => {
                 <div className="text-sm sm:text-base text-gray-300 font-medium">
                   {stat.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Section Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
+          <div className="anim-fade-in-up">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               Trusted by <span style={{
                 background: 'linear-gradient(135deg, #37b7c3, #071952)',
@@ -190,7 +181,7 @@ const TestimonialSection = () => {
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Don't just take our word for it. Here's what our clients say about working with us.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -199,14 +190,9 @@ const TestimonialSection = () => {
             <div
               className="relative overflow-hidden rounded-2xl"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
+                <div
                   key={currentIndex}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="bg-[#2a2438]/80 backdrop-blur-sm border border-[#4a4458]/40 rounded-2xl p-8"
+                  className="bg-[#2a2438]/80 backdrop-blur-sm border border-[#4a4458]/40 rounded-2xl p-8 anim-fade-in-up"
                 >
                   {/* User Info */}
                   <div className="flex items-center mb-6">
@@ -237,8 +223,7 @@ const TestimonialSection = () => {
                   <blockquote className="text-gray-300 text-lg leading-relaxed mb-6">
                     "{testimonials[currentIndex].content}"
                   </blockquote>
-                </motion.div>
-              </AnimatePresence>
+                </div>
 
               {/* Navigation Arrows */}
               <button
@@ -274,12 +259,8 @@ const TestimonialSection = () => {
 
           {/* Right Side - Video/Image */}
           <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden group cursor-pointer"
+            <div
+              className="relative rounded-2xl overflow-hidden group cursor-pointer anim-fade-in-right"
               onClick={handleWatchStory}
             >
               {/* Video/Image Container */}
@@ -324,7 +305,7 @@ const TestimonialSection = () => {
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-[#37b7c3] to-[#071952] rounded-full animate-pulse"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-r from-[#37b7c3] to-[#071952] rounded-full animate-pulse animation-delay-1000"></div>
-            </motion.div>
+            </div>
 
             {/* Stats overlay */}
             <div className="absolute -bottom-12 left-auto right-0 sm:-bottom-8 sm:-left-8 sm:right-auto lg:-bottom-6 lg:-left-6 bg-[#2a2438]/90 backdrop-blur-sm border border-[#4a4458]/40 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 max-w-[200px] sm:max-w-[240px] lg:max-w-none">

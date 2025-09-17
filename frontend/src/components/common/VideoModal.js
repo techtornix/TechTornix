@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { FiX } from 'react-icons/fi';
 
 const VideoModal = ({ isOpen, onClose, videoUrl, title, type = 'youtube' }) => {
@@ -38,64 +37,22 @@ const VideoModal = ({ isOpen, onClose, videoUrl, title, type = 'youtube' }) => {
         return url;
     };
 
-    const backdropVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-    };
-
-    const modalVariants = {
-        hidden: {
-            opacity: 0,
-            scale: 0.8,
-            y: 60
-        },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                damping: 25,
-                stiffness: 300
-            }
-        },
-        exit: {
-            opacity: 0,
-            scale: 0.8,
-            y: 60,
-            transition: {
-                duration: 0.2
-            }
-        }
-    };
-
     return (
-        <AnimatePresence>
+        <>
             {isOpen && (
-                <motion.div
-                className="fixed inset-0 flex items-end sm:items-center justify-center p-4 overflow-y-auto"
-                style={{ zIndex: 999999 }}
-                variants={backdropVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
+                <div
+                    className="fixed inset-0 flex items-end sm:items-center justify-center p-4 overflow-y-auto anim-fade-in"
+                    style={{ zIndex: 999999 }}
                 >
                     {/* Backdrop */}
-                    <motion.div
-                        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                    <div
+                        className="absolute inset-0 bg-black/80 backdrop-blur-sm anim-fade-in"
                         onClick={onClose}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
                     />
 
                     {/* Modal Content */}
-                    <motion.div
-                        className="relative w-full max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden max-h-screen mt-8 sm:mt-16 md:mt-[650px] lg:mt-16 xl:mt-8"
-                        variants={modalVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
+                    <div
+                        className="relative w-full max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden max-h-screen mt-8 sm:mt-16 md:mt-[650px] lg:mt-16 xl:mt-8 anim-scale-in"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
@@ -144,10 +101,10 @@ const VideoModal = ({ isOpen, onClose, videoUrl, title, type = 'youtube' }) => {
                                 Close
                             </button>
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             )}
-        </AnimatePresence>
+        </>
     );
 };
 

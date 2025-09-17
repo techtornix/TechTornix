@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 // Removed GSAP to prevent conflicts
 
@@ -61,13 +60,9 @@ const Home = () => {
         <link rel="canonical" href="https://techtornix.com" />
       </Helmet>
 
-      <motion.div
+      <div
         ref={containerRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen"
+        className="min-h-screen anim-fade-in"
       >
         {/* Hero Section */}
         <SimpleHeroSection />
@@ -153,7 +148,7 @@ const Home = () => {
           <FAQ />
         </section>
         
-      </motion.div>
+      </div>
     </>
   );
 };

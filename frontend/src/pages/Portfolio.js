@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
@@ -225,22 +225,14 @@ const Portfolio = () => {
         <meta name="description" content="Explore our portfolio of successful projects including web applications, mobile apps, AI solutions, and SaaS products." />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8 "
+        className="min-h-screen pt-8 anim-fade-in"
       >
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="anim-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 Our <span className="gradient-text">Portfolio</span>
               </h1>
@@ -248,7 +240,7 @@ const Portfolio = () => {
                 Discover our successful projects and see how we've helped businesses
                 transform their digital presence with innovative solutions.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -280,21 +272,12 @@ const Portfolio = () => {
         {/* Projects Grid */}
         <section className="section-padding">
           <div className="container-custom">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedCategory}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 anim-fade-in-up">
                 {filteredProjects.map((project, index) => (
-                  <motion.div
+                  <div
                     key={project.id}
-                    className="project-card group cursor-pointer h-full"
+                    className="project-card group cursor-pointer h-full transition-transform duration-300 hover:-translate-y-2"
                     onClick={() => openModal(project)}
-                    whileHover={{ y: -10 }}
                   >
                     <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 h-full flex flex-col">
                       {/* Project Image */}
@@ -353,22 +336,16 @@ const Portfolio = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
-            </AnimatePresence>
+            </div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <div className="anim-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Ready to Start Your Project?
               </h2>
@@ -384,26 +361,19 @@ const Portfolio = () => {
                   View Our Services
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
-      </motion.div>
+      </div>
 
       {/* Simple Project Modal */}
-      <AnimatePresence>
-        {isModalOpen && selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-9999999"
+      {isModalOpen && selectedProject && (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-9999999 anim-fade-in"
             onClick={closeModal}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full p-6 z-9999999 max-h-[90vh] overflow-y-auto flex flex-col"
+            <div
+              className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full p-6 z-9999999 max-h-[90vh] overflow-y-auto flex flex-col anim-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
@@ -463,10 +433,9 @@ const Portfolio = () => {
                   View Code
                 </a>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 };

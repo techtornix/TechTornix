@@ -1,6 +1,5 @@
 // src/components/ChatbotWidget.js
 import React, { useState, useRef, useEffect, useCallback, Suspense, lazy } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { geminiService } from '../config/gemini';
 
 // Lazy load Spline component for performance
@@ -310,9 +309,9 @@ const ChatbotWidget = () => {
         <>
             {/* Floating 3D Robot Icon - Only show when chat is closed */}
             {!isOpen && (
-                <motion.div
+                <div
                     ref={widgetRef}
-                    className="fixed z-[9999] cursor-pointer select-none"
+                    className="fixed z-[9999] cursor-pointer select-none hover:scale-105 active:scale-95 transition-transform duration-200"
                     style={{
                         left: `${position.x}px`,
                         top: `${position.y}px`,
@@ -321,8 +320,6 @@ const ChatbotWidget = () => {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                     onClick={!isMobile ? handleRobotClick : undefined}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                 >
                     {/* 3D Spline Robot - No background wrapper */}
                     <div className={`${iconSize} relative`}>
@@ -347,30 +344,19 @@ const ChatbotWidget = () => {
 
                         {/* Notification Badge */}
                         {messages.length === 1 && (
-                            <motion.div
-                                className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md"
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                            >
-                                !
-                            </motion.div>
+                            <div className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md scale-100 animate-scalein">!</div>
                         )}
                     </div>
-                </motion.div>
+                </div>
             )}
 
             {/* Chat Window */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        ref={chatWindowRef}
-                        className="fixed bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col z-[9999999999]"
-                        style={chatStyle}
-                        initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
-                    >
+            {isOpen && (
+                <div
+                    ref={chatWindowRef}
+                    className="fixed bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col z-[9999999999] animate-fadein-up"
+                    style={chatStyle}
+                >
                         {/* Chat Header */}
                         <div
                             className="p-5 text-white flex items-center justify-between rounded-t-3xl"
@@ -391,26 +377,20 @@ const ChatbotWidget = () => {
                                 </div>
                             </div>
                             {/* Close button - larger on mobile for better touch target */}
-                            <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9 }}
+                            <button
                                 onClick={() => setIsOpen(false)}
-                                className={`${isMobile ? 'w-10 h-10' : 'w-8 h-8'
-                                    } bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors`}
+                                className={`${isMobile ? 'w-10 h-10' : 'w-8 h-8'} bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors`}
                             >
                                 <span className={`${isMobile ? 'text-lg' : 'text-base'}`}>✕</span>
-                            </motion.button>
+                            </button>
                         </div>
 
                         {/* Messages Area */}
                         <div className="flex-1 p-5 overflow-y-auto bg-gradient-to-b from-gray-50 to-white space-y-4">
                             {messages.map((message) => (
-                                <motion.div
+                                <div
                                     key={message.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} transition-all duration-300 opacity-100 translate-y-0 animate-fadein-up`}
                                 >
                                     <div
                                         className={`max-w-[80%] px-4 py-3 rounded-2xl shadow-md ${message.sender === 'user'
@@ -420,40 +400,23 @@ const ChatbotWidget = () => {
                                     >
                                         <p className="text-sm leading-relaxed whitespace-pre-line">{message.text}</p>
                                         <p
-                                            className={`text-xs mt-2 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-500'
-                                                }`}
+                                            className={`text-xs mt-2 ${message.sender === 'user' ? 'text-white/70' : 'text-gray-500'}`}
                                         >
                                             {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                         </p>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
 
                             {/* Typing Indicator */}
                             {isTyping && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex justify-start"
-                                >
+                                <div className="flex justify-start">
                                     <div className="bg-white text-gray-800 shadow-md border border-gray-100 px-4 py-3 rounded-2xl flex items-center space-x-2">
-                                        <motion.div
-                                            className="w-2 h-2 bg-[#37b7c3] rounded-full"
-                                            animate={{ y: [0, -5, 0] }}
-                                            transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-                                        />
-                                        <motion.div
-                                            className="w-2 h-2 bg-[#37b7c3] rounded-full"
-                                            animate={{ y: [0, -5, 0] }}
-                                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                                        />
-                                        <motion.div
-                                            className="w-2 h-2 bg-[#37b7c3] rounded-full"
-                                            animate={{ y: [0, -5, 0] }}
-                                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                                        />
+                                        <div className="w-2 h-2 bg-[#37b7c3] rounded-full animate-bounce" />
+                                        <div className="w-2 h-2 bg-[#37b7c3] rounded-full animate-bounce delay-200" />
+                                        <div className="w-2 h-2 bg-[#37b7c3] rounded-full animate-bounce delay-400" />
                                     </div>
-                                </motion.div>
+                                </div>
                             )}
                             <div ref={messagesEndRef} />
                         </div>
@@ -468,12 +431,10 @@ const ChatbotWidget = () => {
                                 placeholder="Ask about TechTornix or technology..."
                                 className="flex-1 px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#37b7c3] focus:border-transparent text-sm bg-gray-50 text-gray-900 placeholder-gray-500 transition-all"
                             />
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                            <button
                                 onClick={handleSendMessage}
                                 disabled={!inputMessage.trim() || isTyping}
-                                className="w-12 h-12 bg-gradient-to-r from-[#37b7c3] to-[#071952] text-white rounded-2xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                                className="w-12 h-12 bg-gradient-to-r from-[#37b7c3] to-[#071952] text-white rounded-2xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover:scale-105 active:scale-95"
                             >
                                 <svg
                                     className="w-5 h-5"
@@ -488,11 +449,11 @@ const ChatbotWidget = () => {
                                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                                     />
                                 </svg>
-                            </motion.button>
+                            </button>
                         </div>
-                    </motion.div>
+                    </div>
                 )}
-            </AnimatePresence>
+            {/* End Chat Window */}
         </>
     );
 };

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { FiUsers } from 'react-icons/fi';
 
 const OrbitalTeamShowcase = ({ teamData = [] }) => {
@@ -177,25 +176,14 @@ const OrbitalTeamShowcase = ({ teamData = [] }) => {
       </div>
 
       {/* Center Hire Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <button
         onClick={handleHireClick}
-        className="
-    relative z-30 
-    bg-white text-gray-800 
-    px-3 sm:px-4 lg:px-7 
-    py-1.5 sm:py-2.5 lg:py-4
-    rounded-full font-bold
-    text-xs sm:text-sm lg:text-lg 
-    shadow-2xl flex items-center justify-center gap-1.5 sm:gap-2 
-    hover:shadow-3xl transition-all duration-300 whitespace-nowrap
-  "
+        className="relative z-30 bg-white text-gray-800 px-3 sm:px-4 lg:px-7 py-1.5 sm:py-2.5 lg:py-4 rounded-full font-bold text-xs sm:text-sm lg:text-lg shadow-2xl flex items-center justify-center gap-1.5 sm:gap-2 hover:shadow-3xl transition-all duration-300 whitespace-nowrap hover:scale-105 active:scale-95"
         style={{ transform: `scale(${Math.max(0.5, scale)})` }}
       >
         <span className="truncate">Hire a Developer</span>
         <FiUsers className="w-3.5 h-3.5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-500" />
-      </motion.button>
+  </button>
 
 
       {/* Team Members */}
@@ -210,30 +198,26 @@ const OrbitalTeamShowcase = ({ teamData = [] }) => {
 
         const isVisible = assignment.alwaysVisible || visibleMembers.has(member.id);
 
-        return (
-          <AnimatePresence key={member.id}>
-            {isVisible && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.75 }}
-                animate={{ opacity: 1, scale: 1, x, y }}
-                exit={{ opacity: 0, scale: 0.75 }}
-                transition={{ duration: 0.5 }}
-                className="absolute flex flex-col items-center z-10 cursor-pointer"
-                onMouseEnter={() => setHoveredMember(member.id)}
-                onMouseLeave={() => setHoveredMember(null)}
-              >
+  if (!isVisible) return null;
+  return (
+          <div
+            key={member.id}
+            className="absolute flex flex-col items-center z-10 cursor-pointer transition-all duration-500 opacity-100 scale-100"
+            style={{ transform: `translate(${x}px, ${y}px) scale(1)` }}
+            onMouseEnter={() => setHoveredMember(member.id)}
+            onMouseLeave={() => setHoveredMember(null)}
+          >
                 <div className="relative">
-                  <motion.img
+                  <img
                     src={member.image}
                     alt={member.name}
                     style={{
                       width: `${Math.max(40, 80 * scale)}px`,
                       height: `${Math.max(40, 80 * scale)}px`,
-                      borderWidth: `${Math.max(2, 3 * scale)}px`
+                      borderWidth: `${Math.max(2, 3 * scale)}px`,
+                      transition: 'transform 0.3s',
                     }}
-                    className="rounded-full border-white/80 shadow-xl object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
+                    className="rounded-full border-white/80 shadow-xl object-cover hover:scale-110"
                   />
                   {assignment.alwaysVisible && (
                     <div
@@ -277,30 +261,20 @@ const OrbitalTeamShowcase = ({ teamData = [] }) => {
                     <p style={{ fontSize: `${Math.max(10, 14 * scale)}px` }} className="text-white/80">{member.role}</p>
                   </div>
                 )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        );
+              </div>
+      );
       })}
 
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
-          <motion.div
+          <div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * (700 * scale),
-            }}
-            animate={{
-              y: [null, -100 * scale],
-              opacity: [0.3, 0.7, 0.3],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              ease: "linear",
+            className="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 3 + 2}s`,
             }}
           />
         ))}

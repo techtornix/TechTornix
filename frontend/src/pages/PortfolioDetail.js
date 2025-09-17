@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -151,13 +150,9 @@ const PortfolioDetail = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
+        className="min-h-screen pt-8 animate-fadein"
       >
         {/* Back Button */}
         <section className="py-8">
@@ -176,11 +171,7 @@ const PortfolioDetail = () => {
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+              <div className="transition-all duration-700 opacity-100 translate-x-0 animate-slidein-left">
                 <span className="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium">
                   {project.category}
                 </span>
@@ -233,14 +224,9 @@ const PortfolioDetail = () => {
                     <p className="font-semibold text-gray-900 dark:text-white">{project.client}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
-              >
+              <div className="relative transition-all duration-700 opacity-100 translate-x-0 animate-slidein-right">
                 <div className="relative h-96 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl overflow-hidden shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -249,7 +235,7 @@ const PortfolioDetail = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -281,17 +267,10 @@ const PortfolioDetail = () => {
                 </h3>
                 <ul className="space-y-4">
                   {project.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
+                    <li key={index} className="flex items-start space-x-3 transition-all duration-500 opacity-100 translate-x-0 animate-fadein-left">
                       <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-600 dark:text-gray-400">{feature}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -303,17 +282,10 @@ const PortfolioDetail = () => {
                 </h3>
                 <ul className="space-y-4">
                   {project.challenges.map((challenge, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
+                    <li key={index} className="flex items-start space-x-3 transition-all duration-500 opacity-100 translate-x-0 animate-fadein-right">
                       <div className="w-2 h-2 bg-accent-600 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-600 dark:text-gray-400">{challenge}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -332,17 +304,10 @@ const PortfolioDetail = () => {
                 </h3>
                 <ul className="space-y-4">
                   {project.solutions.map((solution, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
+                    <li key={index} className="flex items-start space-x-3 transition-all duration-500 opacity-100 translate-x-0 animate-fadein-left">
                       <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-600 dark:text-gray-400">{solution}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -354,17 +319,10 @@ const PortfolioDetail = () => {
                 </h3>
                 <ul className="space-y-4">
                   {project.results.map((result, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-start space-x-3"
-                    >
+                    <li key={index} className="flex items-start space-x-3 transition-all duration-500 opacity-100 translate-x-0 animate-fadein-right">
                       <FiTrendingUp className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600 dark:text-gray-400">{result}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -381,14 +339,7 @@ const PortfolioDetail = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {relatedProjects.map((relatedProject, index) => (
-                  <motion.div
-                    key={relatedProject.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group cursor-pointer"
-                  >
+                  <div key={relatedProject.id} className="group cursor-pointer transition-all duration-700 opacity-100 translate-y-0 animate-fadein-up">
                     <Link to={`/portfolio/${relatedProject.slug}`} className="block">
                       <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                         <div className="relative h-48 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-gray-700 dark:to-gray-600">
@@ -411,13 +362,13 @@ const PortfolioDetail = () => {
                         </div>
                       </div>
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
           </section>
         )}
-      </motion.div>
+  </div>
     </>
   );
 };

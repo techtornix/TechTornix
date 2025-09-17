@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
@@ -628,22 +628,14 @@ const Blog = () => {
         <meta name="description" content="Stay updated with the latest technology trends, tutorials, and insights from the Techtornix team." />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
+        className="min-h-screen pt-8 anim-fade-in"
       >
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="anim-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 Our <span className="gradient-text">Blog</span>
               </h1>
@@ -651,7 +643,7 @@ const Blog = () => {
                 Stay updated with the latest technology trends, insights, and tutorials
                 from our team of experts.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -664,13 +656,9 @@ const Blog = () => {
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {featuredPosts.slice(0, 2).map((post, index) => (
-                  <motion.article
+                  <article
                     key={post.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="blog-card group cursor-pointer"
+                    className="blog-card group cursor-pointer anim-fade-in-up animation-delay-200"
                   >
                     <Link to={`/blog/${post.slug}`} className="block">
                       <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 h-[420px] md:h-[420px] flex flex-col">
@@ -747,7 +735,7 @@ const Blog = () => {
                         </div>
                       </div>
                     </Link>
-                  </motion.article>
+                  </article>
                 ))}
               </div>
             </div>
@@ -794,21 +782,13 @@ const Blog = () => {
         {/* Blog Posts Grid */}
         <section className="section-padding">
           <div className="container-custom">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${selectedCategory}-${searchTerm}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className="anim-fade-in-up">
                 {filteredPosts.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredPosts.map((post, index) => (
-                      <motion.article
+                      <article
                         key={post.id}
-                        className="blog-card group cursor-pointer"
-                        whileHover={{ y: -5 }}
+                        className="blog-card group cursor-pointer transition-transform duration-300 hover:-translate-y-1"
                       >
                         <Link to={`/blog/${post.slug}`} className="block">
                           <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
@@ -888,7 +868,7 @@ const Blog = () => {
                             </div>
                           </div>
                         </Link>
-                      </motion.article>
+                      </article>
                     ))}
                   </div>
                 ) : (
@@ -911,11 +891,10 @@ const Blog = () => {
                     </button>
                   </div>
                 )}
-              </motion.div>
-            </AnimatePresence>
+              </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   );
 };

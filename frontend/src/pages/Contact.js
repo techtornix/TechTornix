@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+// Removed framer-motion
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -155,22 +155,14 @@ Sent via Contact form on your website.`
         <meta name="description" content="Contact Techtornix for your next project. Get in touch with our team for web development, mobile apps, AI solutions, and more." />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
+        className="min-h-screen pt-8 anim-fade-in"
       >
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="anim-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 Get In <span className="gradient-text">Touch</span>
               </h1>
@@ -178,7 +170,7 @@ Sent via Contact form on your website.`
                 Ready to start your next project? We'd love to hear from you.
                 Send us a message and we'll respond as soon as possible.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -187,10 +179,9 @@ Sent via Contact form on your website.`
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {contactInfo.map((info, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className="contact-card text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300"
-                  whileHover={{ y: -5 }}
+                  className="contact-card text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-4">
                     <info.icon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
@@ -204,7 +195,7 @@ Sent via Contact form on your website.`
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     {info.description}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -215,12 +206,7 @@ Sent via Contact form on your website.`
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
+              <div className="anim-fade-in-left">
                 <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                     Send us a Message
@@ -362,16 +348,10 @@ Sent via Contact form on your website.`
                     </button>
                   </form>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Map & Additional Info */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="space-y-8"
-              >
+              <div className="space-y-8 anim-fade-in-right">
                 {/* Map */}
                 <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -416,11 +396,11 @@ Sent via Contact form on your website.`
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   );
 };

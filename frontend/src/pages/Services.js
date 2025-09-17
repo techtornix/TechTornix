@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
@@ -186,22 +185,14 @@ const Services = () => {
         <meta name="keywords" content="web development services, mobile app development, AI solutions, UI UX design, digital marketing, SaaS development, IoT solutions" />
       </Helmet>
 
-      <motion.div
+      <div
         ref={sectionRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="min-h-screen pt-8"
+        className="min-h-screen pt-8 anim-fade-in"
       >
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="anim-fade-in-up">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                 Our <span className="gradient-text">Services</span>
               </h1>
@@ -209,7 +200,7 @@ const Services = () => {
                 We offer a comprehensive range of technology services to help your business thrive in the digital age.
                 From web development to AI solutions, we've got you covered.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -220,12 +211,11 @@ const Services = () => {
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <motion.div
+                  <div
                     key={service.id}
-                    className="service-card group"
+                    className="service-card group transition-transform duration-300 hover:-translate-y-2"
                     onMouseEnter={() => setHoveredService(service.id)}
                     onMouseLeave={() => setHoveredService(null)}
-                    whileHover={{ y: -10 }}
                   >
                     <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 h-full min-h-[540px] flex flex-col">
                       {/* Service Image/Icon */}
@@ -306,7 +296,7 @@ const Services = () => {
                         </Link>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
@@ -319,12 +309,7 @@ const Services = () => {
         {/* CTA Section */}
         <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">
           <div className="container-custom text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <div className="anim-fade-in-up">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Ready to Get Started?
               </h2>
@@ -345,10 +330,10 @@ const Services = () => {
                   View Our Work
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </>
   );
 };
