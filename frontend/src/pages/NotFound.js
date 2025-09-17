@@ -74,7 +74,7 @@ const NotFound = () => {
                   About Us
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/contact#contact-form"
                   className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
                 >
                   Contact

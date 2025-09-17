@@ -151,7 +151,7 @@ const Footer = () => {
                   Let's discuss how we can help bring your ideas to life.
                 </p>
                 <Link
-                  to="/contact"
+                  to="/contact#contact-form"
                   className="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 font-medium text-sm"
                 >
                   <span>Get in Touch</span>

@@ -145,7 +145,7 @@ const OrbitalTeamShowcase = ({ teamData = [] }) => {
   }, [animatedMembers]);
 
   const handleHireClick = () => {
-    navigate('/contact');
+    navigate('/contact#contact-form');
   };
 
   return (

@@ -138,7 +138,7 @@ const ServicesSection = () => {
             Ready to transform your business with cutting-edge technology?
           </p>
           <Link
-            to="/contact"
+            to="/contact#contact-form"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             Get Started Today

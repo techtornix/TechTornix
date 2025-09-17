@@ -103,7 +103,7 @@ const SimpleHeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 anim-fade-in-up animation-delay-400">
               {/* Get Started Today Button */}
               <Link
-                to="/contact"
+                to="/contact#contact-form"
                 className="inline-flex items-center justify-center min-h-[48px] sm:min-h-[56px] px-6 lg:px-8 py-2 lg:py-3 bg-[#01cfff] text-white rounded-full font-semibold hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Get Started Today

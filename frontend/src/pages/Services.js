@@ -318,7 +318,7 @@ const Services = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to="/contact"
+                  to="/contact#contact-form"
                   className="btn bg-white text-primary-600 hover:bg-gray-100"
                 >
                   Get Free Consultation

@@ -210,7 +210,7 @@ const WorkingMethodologySection = () => {
             Let's discuss your project and see how our proven methodology can bring your vision to life.
           </p>
           <a
-            href="/contact"
+            href="/contact#contact-form"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-accent-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
           >
             Get Started Today

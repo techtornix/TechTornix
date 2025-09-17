@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 // Removed framer-motion
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
@@ -19,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef(null);
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,6 +89,24 @@ const Contact = () => {
 
     return () => ctx.revert();
   }, []);
+
+  // Auto-scroll to anchor when navigated with a hash (e.g. /contact#contact-form)
+  useEffect(() => {
+    if (location && location.pathname === '/contact' && location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        // account for fixed header
+        const headerOffset = 80;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        // Small timeout to ensure layout/animations have finished
+        setTimeout(() => {
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }, 50);
+      }
+    }
+  }, [location]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -175,7 +195,7 @@ Sent via Contact form on your website.`
         </section>
 
         {/* Contact Info */}
-        <section className="section-padding bg-white dark:bg-gray-900">
+        <section id='contact_form' className="section-padding bg-white dark:bg-gray-900">
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {contactInfo.map((info, index) => (
@@ -206,7 +226,7 @@ Sent via Contact form on your website.`
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="anim-fade-in-left">
+              <div id="contact-form" className="anim-fade-in-left">
                 <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                     Send us a Message

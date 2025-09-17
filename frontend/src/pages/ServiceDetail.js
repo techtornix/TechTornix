@@ -356,7 +356,7 @@ const ServiceDetail = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/contact" className="btn-primary">
+                  <Link to="/contact#contact-form" className="btn-primary">
                     Get Started
                     <FiArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -374,7 +374,7 @@ const ServiceDetail = () => {
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Let's discuss your requirements and create something amazing together.
                   </p>
-                  <Link to="/contact" className="w-full btn-primary">
+                  <Link to="/contact#contact-form" className="w-full btn-primary">
                     Request Quote
                   </Link>
                 </div>
@@ -533,7 +533,7 @@ const ServiceDetail = () => {
                       </ul>
 
                       <Link
-                        to="/contact"
+                        to="/contact#contact-form"
                         className={`w-full btn ${pkg.popular ? 'btn-primary' : 'btn-outline'
                           }`}
                       >
@@ -596,7 +596,7 @@ const ServiceDetail = () => {
                 Let's discuss your requirements and create something amazing together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="btn bg-white text-primary-600 hover:bg-gray-100">
+                <Link to="/contact#contact-form" className="btn bg-white text-primary-600 hover:bg-gray-100">
                   Get Free Consultation
                 </Link>
                 <Link to="/services" className="btn border-2 border-white text-white hover:bg-white hover:text-primary-600">
