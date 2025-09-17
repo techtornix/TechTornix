@@ -267,7 +267,7 @@ const TestimonialSection = () => {
               <div className="relative aspect-video rounded-2xl overflow-hidden">
                 {/* CEO Image as Main Background */}
                 <img
-                  src="images/team/bahawal.png"
+                  src="/images/team/bahawal.webp"
                   alt="CEO"
                   className="absolute inset-0 w-full h-full object-cover object-top z-0"
                   style={{ filter: 'brightness(0.7) contrast(1.1)' }}

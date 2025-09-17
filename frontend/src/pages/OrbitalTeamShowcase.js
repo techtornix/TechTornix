@@ -15,49 +15,49 @@ const OrbitalTeamShowcase = ({ teamData = [] }) => {
       id: 1,
       name: "Muhammad Bahawal",
       role: "CEO Techtornix Solutions",
-      image: "/images/team/bahawal.png",
+      image: "/images/team/bahawal.webp",
       isCEO: true
     },
     {
       id: 2,
       name: "Tanzeela Farooq",
       role: "Co-Founder",
-      image: "/images/team/tanzeela.jpg",
+      image: "/images/team/tanzeela.webp",
       isCEO: false
     },
     {
       id: 3,
       name: "Muhammad Adeel",
       role: "CTO Techtornix Solutions",
-      image: "/images/team/adeel.jpg",
+      image: "/images/team/adeel.webp",
       isCEO: false
     },
     {
       id: 4,
       name: "Muhammad Jamshaid",
       role: "Mern Stack Developer",
-      image: "/images/team/mj.jpeg",
+      image: "/images/team/mj.webp",
       isCEO: false
     },
     {
       id: 5,
       name: "Muhammad Awais Mubeen",
       role: "IOS Developer",
-      image: "/images/team/mawais.png",
+      image: "/images/team/mawais.webp",
       isCEO: false
     },
     {
       id: 6,
       name: "Muhammad Bilal",
       role: "Lead Designer",
-      image: "/images/team/bilal.jpg",
+      image: "/images/team/bilal.webp",
       isCEO: false
     },
     {
       id: 7,
       name: "Muhammad Iqbal",
       role: "Web Developer",
-      image: "/images/team/Iqbal.png",
+      image: "/images/team/Iqbal.webp",
       isCEO: false
     }
   ];

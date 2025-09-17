@@ -131,7 +131,7 @@ const initializeDefaultData = () => {
         name: 'Muhammad Bahawal',
         position: 'CEO & Founder',
         bio: 'Experienced software engineer with 5+ years in web development.',
-        image: '/images/team/bahawal.jpg',
+  image: '/images/team/bahawal.webp',
         email: 'bahawal@techtornix.com',
         linkedin: 'https://linkedin.com/in/bahawal',
         github: 'https://github.com/bahawal',
